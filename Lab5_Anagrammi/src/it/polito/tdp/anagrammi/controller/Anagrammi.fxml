@@ -30,7 +30,7 @@
                   <Label text="Anagrammi Errati" />
                </children>
             </HBox>
-            <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" />
+            <TextArea fx:id="txtSbagliate" editable="false" prefHeight="200.0" prefWidth="200.0" />
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
                   <Button fx:id="btnReset" mnemonicParsing="false" onAction="#reset" text="Reset" />
