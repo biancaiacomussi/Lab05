@@ -57,13 +57,25 @@ public class Anagramma {
 	
 		
 	public void add(char n) {
+		
 		this.caratteriInseriti.add(n) ;
-		this.caratteriPossibili.remove(n) ;
+	
+	}
+	
+	public void removePossibili(char c) {
+		Character t = c;
+		this.caratteriPossibili.remove(t);
+	}
+	
+	public void addPossibili(char c) {
+		this.caratteriPossibili.add(c);
 	}
 	
 	public void remove(char c) {
-		this.caratteriInseriti.remove(c);
-		this.caratteriPossibili.add(c);
+		
+		Character t = c;
+		this.caratteriInseriti.remove(t);
+	
 	}
 	
 	public boolean possoInserire (char c) {
