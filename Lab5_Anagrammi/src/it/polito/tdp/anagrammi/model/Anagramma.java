@@ -12,11 +12,16 @@ public class Anagramma {
 	
 	
 	public Anagramma(String input) {
-		caratteriPossibili = new ArrayList<Character>();
-		char [] character = input.toCharArray();
-		for(char c : character)
-			caratteriPossibili.add(c);
+		caratteriPossibili = new ArrayList<Character>();		
+		
+		caratteriInseriti = new ArrayList<Character>();
+		this.setCaratteriPossibili(input);
 		sizeMax = caratteriPossibili.size();
+	}
+	
+	public void setCaratteriPossibili(String input) {
+		for(char c : input.toCharArray())
+		this.caratteriPossibili.add(c);
 	}
 	
 	public int getSize() {
@@ -29,9 +34,11 @@ public class Anagramma {
 
 	public String parolaInserita() {
 		String ris="";
-		for(char c : caratteriInseriti) {
-			ris += c;
+		
+		for(Character c : caratteriInseriti) {
+			ris += ""+c+"";
 		}
+		
 		return ris;
 	}
 
@@ -45,7 +52,7 @@ public class Anagramma {
 	}
 
 	public int getSizeMax() {
-		return size;
+		return sizeMax;
 	}
 	
 		

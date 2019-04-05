@@ -11,7 +11,7 @@ public class Model {
 	
 	private List<String> giuste;
 	private List<String> sbagliate;
-	
+	private List<String> soluzioni;
 	
 	
 	public List<String> getGiuste() {
@@ -25,6 +25,7 @@ public class Model {
 	public Model() {
 		giuste = new LinkedList<String>();
 		sbagliate = new LinkedList<String>();
+		soluzioni = new LinkedList<String>();
 	}
 	
 	public void genera(String input) {
@@ -35,13 +36,11 @@ public class Model {
 	}
 	
 	public void recursive(Anagramma parziale, int level) {
-		ParolaDAO dao = new ParolaDAO();
+		
 		
 		if(parziale.getSizeMax()==level) {
-			if(dao.parolaContenuta((parziale.parolaInserita())))
-				giuste.add(parziale.parolaInserita());
-			else
-				sbagliate.add(parziale.parolaInserita()); //clone
+			soluzioni.add(parziale.parolaInserita());
+			
 			return;
 		}
 		
@@ -54,7 +53,18 @@ public class Model {
 			parziale.remove(parziale.getCaratteriPossibili().get(i));
 		}
 		
-		
+	}
+	
+	public void aggiungi() {
+		ParolaDAO dao = new ParolaDAO();
+		for(String s: soluzioni) {
+			
+			if(dao.parolaContenuta(s))
+				giuste.add(s);
+			else
+				sbagliate.add(s);
+			
+		}
 		
 	}
 

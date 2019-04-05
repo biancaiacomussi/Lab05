@@ -1,6 +1,7 @@
 package it.polito.tdp.anagrammi.controller;
 
 import java.net.URL;
+import java.security.InvalidParameterException;
 import java.util.ResourceBundle;
 
 import it.polito.tdp.anagrammi.model.Model;
@@ -33,8 +34,9 @@ public class AnagrammiController {
     @FXML
     private Button btnReset;
     
+    @FXML
     private TextArea txtSbagliate;
-
+    
     public void setModel(Model model) {
     	this.model = model;
     }
@@ -42,10 +44,17 @@ public class AnagrammiController {
     @FXML
     void calcolaAnagrammi(ActionEvent event) {
     	txtCorretti.clear();
-    	//txtSbagliate.clear();
+    	txtSbagliate.clear();
     	
-    	String input = txtParolaInserita.getText();
+    	String input = txtParolaInserita.getText().toLowerCase();
+    	
+    	if(!input.matches("[a-zA-Z]+")) {
+			txtCorretti.appendText("Devi inserire una parola\n");
+			throw new InvalidParameterException("Devi inserire una parola\n");
+		}
+    	
     	model.genera(input);
+    	model.aggiungi();
     	
     	for(String s : model.getGiuste()) {
     		txtCorretti.appendText(s+"\n");
